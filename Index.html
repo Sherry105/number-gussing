@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Guessing Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .button {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Number Guessing Game!</h1>
+    <p>Guess the number between 1 and 100:</p>
+    <input type="number" id="guess" min="1" max="100" required>
+    <button onclick="checkGuess()">Submit Guess</button>
+    <p id="message"></p>
+    <p>Attempts: <span id="attempts">0</span></p>
+    
+    <script>
+        let lowerLimit = 1;
+        let upperLimit = 100;
+        let numberToGuess = Math.floor(Math.random() * (upperLimit - lowerLimit + 1)) + lowerLimit;
+        let attempts = 0;
+
+        function checkGuess() {
+            const guess = parseInt(document.getElementById("guess").value);
+            attempts++;
+            const messageElement = document.getElementById("message");
+            const attemptsElement = document.getElementById("attempts");
+
+            if (guess < numberToGuess) {
+                messageElement.textContent = "Too low! Try again.";
+            } else if (guess > numberToGuess) {
+                messageElement.textContent = "Too high! Try again.";
+            } else {
+                messageElement.textContent = `Congratulations! You guessed the number ${numberToGuess} correctly in ${attempts} attempts!`;
+                document.querySelector("button").disabled = true;
+                // Anchor text styled as a button
+                const anchorText = document.createElement("a");
+                anchorText.href = "https://www.proinstaapks.com"; // Replace with your website link
+                anchorText.className = "button";
+                anchorText.textContent = "Visit Our Website";
+                document.body.appendChild(anchorText);
+            }
+
+            attemptsElement.textContent = attempts;
+        }
+    </script>
+</body>
+</html>

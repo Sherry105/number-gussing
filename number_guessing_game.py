@@ -3,8 +3,7 @@ import random
 def play_game():
     print("Welcome to the Number Guessing Game!")
     lower_limit = int(input("Enter the lower limit for the range: "))
-    upper_limit = int(input("Enter the upper limit for the range: "))
-    number_to_guess = random.randint(lower_limit, upper_limit)
+    upper_limit = int(input("Enter the upper limit for the range: ")ess = random.randint(lower_limit, upper_limit)
     attempts = 0
 
     while True:
